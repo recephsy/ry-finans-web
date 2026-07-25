@@ -2,8 +2,10 @@ import Link from "next/link";
 import { getSiralama } from "@/lib/data";
 import { formatTL } from "@/lib/format";
 
-export default function SiralamaPage() {
-  const { alacaklar, borclar } = getSiralama();
+export const dynamic = "force-dynamic";
+
+export default async function SiralamaPage() {
+  const { alacaklar, borclar } = await getSiralama();
 
   return (
     <div>
