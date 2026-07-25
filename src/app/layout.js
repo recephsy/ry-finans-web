@@ -25,6 +25,9 @@ export default function RootLayout({ children }) {
               <a href="/kasalar">Kasalar</a>
               <a href="/vadeli-odemeler">Vadeli Ödemeler</a>
               <a href="/siralama">Sıralama</a>
+              <a href="/hareketler/yeni">+ İşlem</a>
+              <a href="/kisiler/yeni">+ Kişi</a>
+              <a href="/ayarlar">Ayarlar</a>
             </nav>
           </header>
           <main className="content">{children}</main>
