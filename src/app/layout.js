@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           </header>
           <main className="content">{children}</main>
           <footer className="footer">
-            Milestone 1 — görüntüleme prototipi. Veri, RECEP_FINANS_v4_6_1.xlsx dosyasından alınan bir anlık görüntüdür.
+            Milestone 1 — görüntüleme prototipi. Veri doğrudan Google Drive&apos;daki güncel tablodan okunur (canlı).
           </footer>
         </div>
       </body>

@@ -1,10 +1,12 @@
 import { getDashboard, getVadeliOdemeler } from "@/lib/data";
 import { formatTL, formatSayi } from "@/lib/format";
 
-export default function DashboardPage() {
-  const d = getDashboard();
+export const dynamic = "force-dynamic";
+
+export default async function DashboardPage() {
+  const d = await getDashboard();
   const today = new Date().toISOString().slice(0, 10);
-  const yaklasanlar = getVadeliOdemeler()
+  const yaklasanlar = (await getVadeliOdemeler())
     .filter((h) => h.vade >= today)
     .slice(0, 5);
 
