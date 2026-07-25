@@ -2,10 +2,12 @@ import Link from "next/link";
 import { getKisiByAd, getKisiEkstresi } from "@/lib/data";
 import { formatTL } from "@/lib/format";
 
-export default function KisiDetayPage({ params }) {
+export const dynamic = "force-dynamic";
+
+export default async function KisiDetayPage({ params }) {
   const ad = decodeURIComponent(params.id);
-  const kisi = getKisiByAd(ad);
-  const ekstre = getKisiEkstresi(ad);
+  const kisi = await getKisiByAd(ad);
+  const ekstre = await getKisiEkstresi(ad);
 
   return (
     <div>
