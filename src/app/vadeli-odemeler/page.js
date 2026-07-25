@@ -1,6 +1,8 @@
 import { getVadeliOdemeler } from "@/lib/data";
 import { formatTL } from "@/lib/format";
 
+export const dynamic = "force-dynamic";
+
 function kalanGun(vade) {
   const today = new Date();
   const d = new Date(vade);
@@ -8,8 +10,8 @@ function kalanGun(vade) {
   return diff;
 }
 
-export default function VadeliOdemelerPage() {
-  const hareketler = getVadeliOdemeler();
+export default async function VadeliOdemelerPage() {
+  const hareketler = await getVadeliOdemeler();
 
   return (
     <div>
