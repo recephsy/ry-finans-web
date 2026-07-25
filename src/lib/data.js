@@ -1,6 +1,7 @@
 const SHEET_ID = "1vOzs_Z5hG2akYYHZIjojumpm5GHNuPNl";
 const HAREKETLER_GID = "844274764";
 const KISILER_GID = "2076031649";
+const AYARLAR_GID = "1874469929";
 
 function csvUrl(gid) {
   return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
@@ -305,4 +306,41 @@ export async function getSiralama() {
     .filter((k) => (k.bakiye ?? 0) < -0.005)
     .sort((a, b) => a.bakiye - b.bakiye);
   return { alacaklar, borclar };
+}
+
+export async function getHareketByNo(no) {
+  const { hareketler } = await loadData();
+  return hareketler.find((h) => Number(h.no) === Number(no));
+}
+
+let ayarlarCache = null;
+let ayarlarCacheAt = 0;
+
+// Ayarlar sekmesindeki referans listelerini okur: İşlem Türü (+ Bakiye Etkisi çarpanı),
+// Para Birimi, Ödeme Yöntemi, Kategori, Durum, Kart, Kişi Türü.
+export async function getAyarlar() {
+  const now = Date.now();
+  if (ayarlarCache && now - ayarlarCacheAt < CACHE_MS) return ayarlarCache;
+
+  const { rows } = await fetchCsvRows(AYARLAR_GID);
+
+  const uniq = (arr) => [...new Set(arr.filter((v) => v && v.trim() !== ""))];
+
+  const islemTurleri = rows
+    .map((r) => ({ ad: cleanText(r[0]), carpan: parseNumber(r[1]) }))
+    .filter((x) => x.ad);
+
+  const result = {
+    islemTurleri, // [{ad, carpan}]
+    paraBirimleri: uniq(rows.map((r) => r[2])),
+    odemeYontemleri: uniq(rows.map((r) => r[3])),
+    kategoriler: uniq(rows.map((r) => r[4])),
+    durumlar: uniq(rows.map((r) => r[5])),
+    kartlar: uniq(rows.map((r) => r[6])),
+    kisiTurleri: uniq(rows.map((r) => r[7])),
+  };
+
+  ayarlarCache = result;
+  ayarlarCacheAt = now;
+  return result;
 }
