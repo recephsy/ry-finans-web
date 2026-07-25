@@ -46,6 +46,7 @@ export default async function KisiDetayPage({ params }) {
             <th>Vade</th>
             <th>Durum</th>
             <th>Açıklama</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -68,6 +69,9 @@ export default async function KisiDetayPage({ params }) {
               <td>{h.vade || "-"}</td>
               <td>{h.durum}</td>
               <td>{h.aciklama}</td>
+              <td>
+                <Link href={`/hareketler/${h.no}/duzenle`}>Düzenle</Link>
+              </td>
             </tr>
           ))}
         </tbody>
