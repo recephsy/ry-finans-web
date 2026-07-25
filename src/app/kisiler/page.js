@@ -2,8 +2,10 @@ import Link from "next/link";
 import { getKisiler } from "@/lib/data";
 import { formatTL } from "@/lib/format";
 
-export default function KisilerPage() {
-  const kisiler = getKisiler();
+export const dynamic = "force-dynamic";
+
+export default async function KisilerPage() {
+  const kisiler = await getKisiler();
 
   return (
     <div>
