@@ -16,7 +16,7 @@ export default async function KisilerPage() {
             <th>Ad</th>
             <th>Tür</th>
             <th>Kategori</th>
-            <th>Bakiye (TL)</th>
+            <th className="num">Bakiye (TL)</th>
             <th>Durum</th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@ export default async function KisilerPage() {
               </td>
               <td>{k.tur}</td>
               <td>{k.kategori}</td>
-              <td className={(k.bakiye ?? 0) >= 0 ? "positive" : "negative"}>
+              <td className={"num " + ((k.bakiye ?? 0) >= 0 ? "positive" : "negative")}>
                 {formatTL(k.bakiye)}
               </td>
               <td>
