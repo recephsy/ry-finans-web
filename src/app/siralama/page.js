@@ -18,7 +18,7 @@ export default async function SiralamaPage() {
               <tr>
                 <th>#</th>
                 <th>Kişi</th>
-                <th>Bakiye (TL)</th>
+                <th className="num">Bakiye (TL)</th>
               </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@ export default async function SiralamaPage() {
                   <td>
                     <Link href={`/kisiler/${encodeURIComponent(k.ad)}`}>{k.ad}</Link>
                   </td>
-                  <td className="positive">{formatTL(k.bakiye)}</td>
+                  <td className="num positive">{formatTL(k.bakiye)}</td>
                 </tr>
               ))}
             </tbody>
@@ -42,7 +42,7 @@ export default async function SiralamaPage() {
               <tr>
                 <th>#</th>
                 <th>Kişi</th>
-                <th>Bakiye (TL)</th>
+                <th className="num">Bakiye (TL)</th>
               </tr>
             </thead>
             <tbody>
@@ -52,7 +52,7 @@ export default async function SiralamaPage() {
                   <td>
                     <Link href={`/kisiler/${encodeURIComponent(k.ad)}`}>{k.ad}</Link>
                   </td>
-                  <td className="negative">{formatTL(k.bakiye)}</td>
+                  <td className="num negative">{formatTL(k.bakiye)}</td>
                 </tr>
               ))}
             </tbody>
