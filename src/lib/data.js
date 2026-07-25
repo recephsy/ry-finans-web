@@ -280,11 +280,11 @@ export async function getKisiEkstresi(ad) {
 }
 
 export function getKasalar() {
-  return undefined;
+  return [];
 }
 
 export function getKasaByAnahtar() {
-  return undefined;
+  return null;
 }
 
 export function getKasaHareketleri() {
