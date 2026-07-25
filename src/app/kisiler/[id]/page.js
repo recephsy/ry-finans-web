@@ -40,9 +40,9 @@ export default async function KisiDetayPage({ params }) {
           <tr>
             <th>Tarih</th>
             <th>İşlem Türü</th>
-            <th>Tutar</th>
-            <th>TL Etki</th>
-            <th>Bakiye</th>
+            <th className="num">Tutar</th>
+            <th className="num">TL Etki</th>
+            <th className="num">Bakiye</th>
             <th>Vade</th>
             <th>Durum</th>
             <th>Açıklama</th>
@@ -56,13 +56,13 @@ export default async function KisiDetayPage({ params }) {
                 {h.islemTuru}
                 {h.karsiTaraf ? " (Virman — karşı etki)" : ""}
               </td>
-              <td>
+              <td className="num">
                 {h.tutar} {h.paraBirimi}
               </td>
-              <td className={(h.etki ?? 0) >= 0 ? "positive" : "negative"}>
+              <td className={"num " + ((h.etki ?? 0) >= 0 ? "positive" : "negative")}>
                 {formatTL(h.etki)}
               </td>
-              <td className={(h.bakiye ?? 0) >= 0 ? "positive" : "negative"}>
+              <td className={"num " + ((h.bakiye ?? 0) >= 0 ? "positive" : "negative")}>
                 {formatTL(h.bakiye)}
               </td>
               <td>{h.vade || "-"}</td>
