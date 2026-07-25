@@ -20,10 +20,10 @@ export default async function VadeliOdemelerPage() {
         <thead>
           <tr>
             <th>Vade</th>
-            <th>Kalan Gün</th>
+            <th className="num">Kalan Gün</th>
             <th>Kişi</th>
             <th>İşlem Türü</th>
-            <th>Tutar (TL)</th>
+            <th className="num">Tutar (TL)</th>
             <th>Durum</th>
           </tr>
         </thead>
@@ -33,10 +33,10 @@ export default async function VadeliOdemelerPage() {
             return (
               <tr key={i}>
                 <td>{h.vade}</td>
-                <td className={gun < 0 ? "negative" : ""}>{gun}</td>
+                <td className={"num " + (gun < 0 ? "negative" : "")}>{gun}</td>
                 <td>{h.kisi}</td>
                 <td>{h.islemTuru}</td>
-                <td>{formatTL(h.tlTutar)}</td>
+                <td className="num">{formatTL(h.tlTutar)}</td>
                 <td>
                   <span className="pill">{h.durum}</span>
                 </td>
